@@ -44,6 +44,29 @@ class Horoscope:
         }
 
         return dict
+    
+    @staticmethod
+    def get_tomorrow_horoscope(sunsign):
+        url = "http://www.ganeshaspeaks.com/horoscopes/tomorrow-horoscope/" + sunsign
+        response = requests.get(url)
+        tree = html.fromstring(response.content)
+        date = str(tree.xpath(
+            "//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
+        date = date.replace("']", "").replace("['", "")
+        date_utc = datetime.now(timezone.utc)
+        date_website = "-".join(date.split('-')[::-1])
+        date_local = str(date_utc.astimezone()).split(' ')[0]
+        
+        horoscope = str(tree.xpath(
+                "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
+        horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "").replace("[\'", "").replace("\']", "")
+        dict = {
+            'date': date_local,
+            'horoscope': horoscope,
+            'sunsign': sunsign
+        }
+
+        return dict
 
     @staticmethod
     def get_weekly_horoscope(sunsign):
