@@ -31,6 +31,14 @@ def today_horoscope_route (sunsign) :
 	return jsonify (date=result['date'],
 			sunsign=result['sunsign'],
 			horoscope=result['horoscope'])
+
+#Tomorrow' Horoscope
+@app.route ('/horoscope/tomorrow/<sunsign>', methods=['GET'])
+def tomorrow_horoscope_route (sunsign) :
+	result = dict (Horoscope.get_tomorrow_horoscope (sunsign))
+	return jsonify (date=result['date'],
+			sunsign=result['sunsign'],
+			horoscope=result['horoscope'])
 					
 
 #Current Week Horoscope
