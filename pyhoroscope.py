@@ -61,7 +61,7 @@ class Horoscope:
                 "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "").replace("[\'", "").replace("\']", "")
         dict = {
-            'date': date_local,
+            'date': date_website,
             'horoscope': horoscope,
             'sunsign': sunsign
         }
