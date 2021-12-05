@@ -80,7 +80,7 @@ class Horoscope:
             "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("']", "").replace("['", "")
         dict = {
-            'date': week,
+            'week': week,
             'horoscope': horoscope,
             'sunsign': sunsign
         }
@@ -99,7 +99,7 @@ class Horoscope:
             "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()[1]"))
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("']", "").replace("['", "")
         dict = {
-            'date': month,
+            'month': month,
             'horoscope': horoscope,
             'sunsign': sunsign
         }
@@ -118,7 +118,7 @@ class Horoscope:
             "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("']", "").replace("['", "")
         dict = {
-            'date': year,
+            'year': year,
             'horoscope': horoscope,
             'sunsign': sunsign
         }
