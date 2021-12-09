@@ -20,21 +20,8 @@ class Horoscope:
         date_website = "-".join(date.split('-')[::-1])
         date_local = str(date_utc.astimezone()).split(' ')[0]
 
-        if date_local < date_website :
-            url = "https://www.ganeshaspeaks.com/horoscopes/yesterday-horoscope/" + sunsign
-            response = requests.get(url)
-            tree = html.fromstring(response.content)
-            horoscope = str(tree.xpath(
-                "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
-        elif date_local > date_website :
-            url = "https://www.ganeshaspeaks.com/horoscopes/tomorrow-horoscope/" + sunsign
-            response = requests.get(url)
-            tree = html.fromstring(response.content)
-            horoscope = str(tree.xpath(
-                "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
-        else :
-            horoscope = str(tree.xpath(
-            "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
+        horoscope = str(tree.xpath(
+        "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
 
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "").replace("[\'", "").replace("\']", "")
         dict = {
