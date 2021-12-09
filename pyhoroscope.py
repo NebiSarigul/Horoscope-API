@@ -25,7 +25,7 @@ class Horoscope:
 
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "").replace("[\'", "").replace("\']", "")
         dict = {
-            'date': date_local,
+            'date': date_website,
             'horoscope': horoscope,
             'sunsign': sunsign
         }
