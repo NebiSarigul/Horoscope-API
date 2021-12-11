@@ -15,10 +15,9 @@ class Horoscope:
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
             "//div[@class=\"ms-3\"]/p/text()"))
-        #date = date.replace("']", "").replace("['", "")
+        date = date.replace("']", "").replace("['", "")
         date_utc = datetime.now(timezone.utc)
-        #date_website = "-".join(date.split('-')[::-1])
-        date_website = date
+        date_website = "-".join(date.split('-')[::-1])
         date_local = str(date_utc.astimezone()).split(' ')[0]
 
         horoscope = str(tree.xpath(
