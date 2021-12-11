@@ -15,13 +15,14 @@ class Horoscope:
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
             "//div[@class=\"ms-3\"]/p/text()"))
-        date = date.replace("']", "").replace("['", "")
+        #date = date.replace("']", "").replace("['", "")
         date_utc = datetime.now(timezone.utc)
-        date_website = "-".join(date.split('-')[::-1])
+        #date_website = "-".join(date.split('-')[::-1])
+        date_website = date
         date_local = str(date_utc.astimezone()).split(' ')[0]
 
         horoscope = str(tree.xpath(
-        "//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
+        "//p[@id=\"horo_content\"]/text()"))
 
         horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "").replace("[\'", "").replace("\']", "")
         dict = {
