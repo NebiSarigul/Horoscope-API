@@ -14,7 +14,7 @@ class Horoscope:
         response = requests.get(url)
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
-            "//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
+            "//div[@class=\"ms-3\"]/p/text()"))
         date = date.replace("']", "").replace("['", "")
         date_utc = datetime.now(timezone.utc)
         date_website = "-".join(date.split('-')[::-1])
